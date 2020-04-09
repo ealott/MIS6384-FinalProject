@@ -1,3 +1,13 @@
 from django.db import models
 
-# Create your models here.
+class Voter(models.Model):
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    birthdate = models.Field('birthdate')
+    address = models.CharField(max_length=200)
+    city = models.CharField(max_length=200)
+    state = models.CharField(max_length=200)
+    zipcode = models.CharField(max_length=7)
+    email = models.EmailField()
+    phone = models.PhoneNumberField(_(""))
+    
