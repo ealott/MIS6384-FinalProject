@@ -25,18 +25,20 @@ SECRET_KEY = '8f#$t51tjdv4ie7*@_$np=7az&9c_jwlhxy(ni)^p&9qob15wf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','bpyea96qj8.execute-api.us-east-1.amazonaws.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'outreach.apps.OutreachConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +77,12 @@ WSGI_APPLICATION = 'mis6384.wsgi.application'
 
 DATABASES = {
     'default': {
+        #'ENGINE': 'zappa_django_utils.db.backends.s3sqlite',
+        #'NAME': 'db.sqlite3',
+        #'BUCKET': 'zappa-gutoluxdv-db'
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
     }
 }
 
@@ -118,3 +124,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#YOUR_S3_BUCKET = "zappa-static"
+
+#STATICFILES_STORAGE = "django_s3_storage.storage.StaticS3Storage"
+#AWS_S3_BUCKET_NAME_STATIC = YOUR_S3_BUCKET
+
+# These next two lines will serve the static files directly 
+# from the s3 bucket
+#AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % YOUR_S3_BUCKET
+#STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+
+# OR...if you create a fancy custom domain for your static files use:
+#AWS_S3_PUBLIC_URL_STATIC = "https://static.zappaguide.com/"
+
+CRISPY_TEMPLATE_PACK="bootstrap4"

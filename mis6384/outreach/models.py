@@ -9,5 +9,5 @@ class Voter(models.Model):
     state = models.CharField(max_length=200)
     zipcode = models.CharField(max_length=7)
     email = models.EmailField()
-    phone = models.PhoneNumberField(_(""))
-    
+    phone = models.IntegerField()
+    #ip = models.GenericIPAddressField(_(""), protocol="both", unpack_ipv4=False)
