@@ -11,6 +11,7 @@ django = "*"
 zappa = "*"
 zappa-django-utils = "*"
 django-crispy-forms = "*"
+django-s3-storage = "*"
 
 [requires]
 python_version = "3.8"

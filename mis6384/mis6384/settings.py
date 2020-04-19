@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'django_s3_sqlite',
+    'django_s3_storage',
 ]
 
 MIDDLEWARE = [
@@ -77,11 +79,13 @@ WSGI_APPLICATION = 'mis6384.wsgi.application'
 
 DATABASES = {
     'default': {
-        #'ENGINE': 'zappa_django_utils.db.backends.s3sqlite',
-        #'NAME': 'db.sqlite3',
-        #'BUCKET': 'zappa-gutoluxdv-db'
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        ##S3-hosted SQLite
+        'ENGINE': 'django_s3_sqlite',
+        'NAME': 'db.sqlite3',
+        'BUCKET': 'zappa-gutoluxdv'
+        ##Default local SQLite
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 
     }
 }
@@ -125,15 +129,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#YOUR_S3_BUCKET = "zappa-static"
+YOUR_S3_BUCKET = "zappa-static"
 
-#STATICFILES_STORAGE = "django_s3_storage.storage.StaticS3Storage"
-#AWS_S3_BUCKET_NAME_STATIC = YOUR_S3_BUCKET
+STATICFILES_STORAGE = "django_s3_storage.storage.StaticS3Storage"
+DEFAULT_FILE_STORAGE = "django_s3_storage.storage.S3Storage"
+AWS_S3_BUCKET_NAME_STATIC = YOUR_S3_BUCKET
 
 # These next two lines will serve the static files directly 
 # from the s3 bucket
-#AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % YOUR_S3_BUCKET
-#STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % YOUR_S3_BUCKET
+STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
 
 # OR...if you create a fancy custom domain for your static files use:
 #AWS_S3_PUBLIC_URL_STATIC = "https://static.zappaguide.com/"

@@ -1,0 +1,10 @@
+{
+    "dev": {
+        "aws_region":"us-east-1",
+        "django_settings": "mis6384.settings",
+        "profile_name": "mis6384",
+        "project_name": "mis6384-finalpr",
+        "runtime": "python3.8",
+        "s3_bucket": "zappa-gutoluxdv"
+    }
+}
