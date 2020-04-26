@@ -1,12 +1,15 @@
 {% extends "main/base.html" %}
 
 {% block title %}Create an Account{% endblock %}
+<h1> Add yourself to the campaign outreach database! </h1> 
 {% load crispy_forms_tags %}
 
 {% block content %}
     <form method="POST" class="form-group">
 	{% csrf_token %}
-	{{ form|crispy }}
+	#{{ user_form|crispy }}
+	{{ voter_form|crispy }}
+
 	<button type="submit" class="btn btn-success">Register</button>
     </form>
 {% endblock %}
