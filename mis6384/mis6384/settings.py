@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_s3_sqlite',
     'django_s3_storage',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +145,5 @@ STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
 #AWS_S3_PUBLIC_URL_STATIC = "https://static.zappaguide.com/"
 
 CRISPY_TEMPLATE_PACK="bootstrap4"
+RECAPTCHA_PUBLIC_KEY = '6LfSTu4UAAAAAE22_xboF_OxMs9tlh35FF7LZwfm'
+RECAPTCHA_PRIVATE_KEY = '6LfSTu4UAAAAAOELyeRwgS7jz4FU_-NrReyOaTvU'
